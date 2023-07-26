@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Artify</title>
+    <link rel="icon" href="https://github.com/AkshataABhat/Artify/blob/main/static/image/icon.png?raw=true" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <style>
+        body {
+            padding-top: 70px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: url('https://raw.githubusercontent.com/AkshataABhat/Artify/760d81f68c597035bf54e4c7627e68454bdaffe0/static/image/endless-constellation.svg')
+        }
+
+        h1 {
+            color: #337ab7;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        input[type="file"] {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 100px;
+        }
+        p{
+            font-size: 18px;
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        h2 {
+            color: #337ab7;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        img {
+            max-width: 30%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" >Artify</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="index.html">Image Editor</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Text Based Image Editing</h1>
+    <div>
+        <h2>User Guide:</h2>
+        <p><b>Grayscale:</b> Enter "grayscale" to convert the uploaded image to grayscale.</p>
+        <p><b>Invert:</b> Enter "invert" to invert the colors of the uploaded image.</p>
+        <p><b>Detect Edges:</b> Enter "detect edges" to apply edge detection to the uploaded image.</p>
+        <p><b>Insert Text:</b> Enter "insert text: {your text}" to desired text to the uploaded image.</p>
+
+    </div>
+    
+    <form method="POST" enctype="multipart/form-data" action="/convert_image">
+        <input type="file" name="image_file" accept=".jpg, .jpeg">
+        <br>
+
+        <label for="format"></label>
+        <input type="text" name="format" id="format" required>
+        <br>
+        <input type="submit" value="Convert">
+    </form>
+    {% if converted_image %}
+        <br>
+        <h2>Converted Image</h2>
+        <a href="{{ converted_image }}" download>Download Converted Image</a>
+        <br>
+        <img src="{{ converted_image }}" alt="Converted Image">
+    {% endif %}
+</body>
+</html>
