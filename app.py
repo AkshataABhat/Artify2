@@ -74,7 +74,7 @@ def blur_image(image_path):
     converted_image = base64.b64encode(buffer).decode('utf-8')
     return converted_image
     
-@app.route('/convert_image', methods=['POST'])
+@app.route('/convert_image', methods=['POST','GET'])
 def convert_image_route():
     # Get the uploaded image file
     image_file = request.files['image_file']
